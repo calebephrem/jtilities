@@ -81,3 +81,37 @@ export function sortArr(arr) {
 
   return [...sortArr(left), pivot, ...sortArr(right)];
 }
+
+export function unique(arr) {
+  return [...new Set(arr)];
+}
+
+export function chunk(arr, size) {
+  if (size <= 0) throw new Error('Size must be greater than 0');
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+
+export function flatten(arr) {
+  return arr.reduce(
+    (acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val),
+    []
+  );
+}
+
+export function compact(arr) {
+  return arr.filter(Boolean);
+}
+
+export function intersection(arr1, arr2) {
+  const set2 = new Set(arr2);
+  return arr1.filter((item) => set2.has(item));
+}
+
+export function difference(arr1, arr2) {
+  const set2 = new Set(arr2);
+  return arr1.filter((item) => !set2.has(item));
+}
