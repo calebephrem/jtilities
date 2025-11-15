@@ -1,15 +1,15 @@
 {
   "name": "jtilities",
   "version": "1.0.0",
-  "description": "",
-  "main": "test.js",
+  "description": "A lightweight, modular library of JavaScript utility functions designed to simplify everyday coding tasks",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/calebephrem/jtilities"
+    "url": "https://github.com/calebephrem/jtilities"
   },
   "keywords": [
     "utilities",
