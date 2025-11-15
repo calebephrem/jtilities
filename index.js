@@ -338,15 +338,6 @@ export function deepCompareObj(obj1, obj2) {
 }
 
 /**
- * Helper: Checks if a value is a plain object.
- * @param {*} param - Value to check.
- * @returns {boolean} True if plain object.
- */
-function isObj(param) {
-  return typeof param === 'object' && !Array.isArray(param) && param !== null;
-}
-
-/**
  * Restricts a number within a given range.
  * @param {number} num - The number to clamp.
  * @param {number} min - Minimum allowed value.
@@ -354,7 +345,11 @@ function isObj(param) {
  * @returns {number|undefined} Clamped number, or undefined if invalid.
  */
 export function clamp(num, min, max) {
-  if (typeof num !== 'number' || typeof min !== 'number' || typeof max !== 'number') {
+  if (
+    typeof num !== 'number' ||
+    typeof min !== 'number' ||
+    typeof max !== 'number'
+  ) {
     console.error('Error: num, min, and max must be numbers');
     return;
   }
@@ -371,7 +366,7 @@ export function clamp(num, min, max) {
  * @returns {number|undefined} Sum of array values, or undefined if invalid.
  */
 export function sumArr(arr) {
-  if (!Array.isArray(arr) || arr.some(n => typeof n !== 'number')) {
+  if (!Array.isArray(arr) || arr.some((n) => typeof n !== 'number')) {
     console.error('Error: arr must be an array of numbers');
     return;
   }
@@ -384,7 +379,11 @@ export function sumArr(arr) {
  * @returns {number|undefined} Average of array values, or undefined if invalid.
  */
 export function averageArr(arr) {
-  if (!Array.isArray(arr) || arr.length === 0 || arr.some(n => typeof n !== 'number')) {
+  if (
+    !Array.isArray(arr) ||
+    arr.length === 0 ||
+    arr.some((n) => typeof n !== 'number')
+  ) {
     console.error('Error: arr must be a non-empty array of numbers');
     return;
   }
@@ -426,4 +425,95 @@ export function isPrime(n) {
     if (n % i === 0) return false;
   }
   return true;
+}
+
+/**
+ * Converts a string to camelCase.
+ * @param {string} str - The string to convert.
+ * @returns {string|undefined} camelCase string, or undefined if invalid.
+ */
+export function camelCase(str) {
+  if (typeof str !== 'string') {
+    console.error(`Error: ${str} is not a string`);
+    return;
+  }
+  return str
+    .toLowerCase()
+    .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))
+    .replace(/^(.)/, (c) => c.toLowerCase());
+}
+
+/**
+ * Converts a string to kebab-case.
+ * @param {string} str - The string to convert.
+ * @returns {string|undefined} kebab-case string, or undefined if invalid.
+ */
+export function kebabCase(str) {
+  if (typeof str !== 'string') {
+    console.error(`Error: ${str} is not a string`);
+    return;
+  }
+  return str
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+/**
+ * Converts a string to a URL-friendly slug.
+ * @param {string} str - The string to slugify.
+ * @returns {string|undefined} Slugified string, or undefined if invalid.
+ */
+export function slugify(str) {
+  if (typeof str !== 'string') {
+    console.error(`Error: ${str} is not a string`);
+    return;
+  }
+  return str
+    .trim()
+    .toLowerCase()
+    .replace(/[\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-');
+}
+
+/**
+ * Reverses the characters in a string.
+ * @param {string} str - The string to reverse.
+ * @returns {string|undefined} Reversed string, or undefined if invalid.
+ */
+export function reverse(str) {
+  if (typeof str !== 'string') {
+    console.error(`Error: ${str} is not a string`);
+    return;
+  }
+  return [...str].reverse().join('');
+}
+
+/**
+ * Pads a string to a given length with a specified character.
+ * @param {string} str - The string to pad.
+ * @param {number} length - Desired total length.
+ * @param {string} char - Character to pad with.
+ * @returns {string|undefined} Padded string, or undefined if invalid.
+ */
+export function pad(str, length, char = ' ') {
+  if (
+    typeof str !== 'string' ||
+    typeof length !== 'number' ||
+    typeof char !== 'string'
+  ) {
+    console.error('Error: invalid parameters for pad');
+    return;
+  }
+  if (char.length !== 1) {
+    console.error('Error: pad character must be a single character');
+    return;
+  }
+  if (str.length >= length) return str;
+  const padLength = length - str.length;
+  const leftPad = Math.floor(padLength / 2);
+  const rightPad = padLength - leftPad;
+  return char.repeat(leftPad) + str + char.repeat(rightPad);
 }

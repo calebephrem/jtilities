@@ -1,5 +1,21 @@
 # Change Log
 
+## `v1.3.0`
+
+### 🚀 Enhancements
+
+- Add more string utility functions
+
+  - camelCase
+  - kebabCase
+  - slugify
+  - reverse
+  - pad
+
+### 🛠️ Fixes
+
+- Remove duplicate `isObj` function
+
 ## `v1.2.0`
 
 ### 🚀 Enhancements
