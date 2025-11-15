@@ -1,0 +1,26 @@
+{
+  "name": "jtilities",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/calebephrem/jtilities"
+  },
+  "keywords": [
+    "utilities",
+    "utils",
+    "jtilities",
+    "jtilities",
+    "jstilities",
+    "utilsjs",
+    "js-utilities",
+    "utils-js"
+  ],
+  "author": "Caleb Ephrem",
+  "license": "MIT"
+}
